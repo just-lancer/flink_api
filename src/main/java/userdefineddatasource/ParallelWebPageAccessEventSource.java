@@ -28,7 +28,7 @@ public class ParallelWebPageAccessEventSource extends RichParallelSourceFunction
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 
         while (isRunning && count <= 100) {
-            user = users[random.nextInt(users.length - 1)];
+            user = users[random.nextInt(users.length)];
             url = urls[random.nextInt(urls.length)];
             LocalDateTime now = LocalDateTime.now();
             String dateTime = dateTimeFormatter.format(now);
