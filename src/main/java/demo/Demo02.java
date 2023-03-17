@@ -15,7 +15,7 @@ import java.util.Random;
  * @create 2023-03-10 16:12
  * @desc 用户自定义分区
  */
-public class Demo2 {
+public class Demo02 {
     public static void main(String[] args) throws Exception {
         // 1、创建流执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();

@@ -8,7 +8,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
  * @create 2023-03-02 18:07
  * @desc
  */
-public class Demo1 {
+public class Demo01 {
     public static void main(String[] args) throws Exception {
         // TODO 1、创建流执行环境
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
