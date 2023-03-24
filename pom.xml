@@ -59,6 +59,26 @@
             <version>8.0.26</version>
         </dependency>
 
+        <!-- dataworks用户自定义函数依赖 -->
+        <dependency>
+            <groupId>com.aliyun.odps</groupId>
+            <artifactId>odps-sdk-udf</artifactId>
+            <version>0.29.10-public</version>
+        </dependency>
+
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.72</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>4.6</version>
+        </dependency>
+
 
         <!-- 引入日志管理相关依赖-->
         <dependency>
