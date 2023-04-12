@@ -19,7 +19,7 @@ import java.util.HashSet;
 /**
  * @author shaco
  * @create 2023-03-17 14:12
- * @desc 窗口操作，窗口分配器 + 窗口函数，演示需求：使用aggregate()，求人均重复访问量，即PV/UV
+ * @desc 窗口操作，窗口分配器 + 增量窗口函数，演示需求：使用aggregate()，求人均重复访问量，即PV/UV
  * PV是所有站点的访问量，UV是是独立用户数量
  */
 public class C017_WindowAssignerAndAggregate {

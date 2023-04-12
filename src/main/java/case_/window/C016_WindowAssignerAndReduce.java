@@ -21,7 +21,7 @@ import java.util.Date;
 /**
  * @author shaco
  * @create 2023-03-17 10:57
- * @desc 窗口操作，窗口分配器 + 窗口函数，演示需求：每10秒钟计算一次用户的PV
+ * @desc 窗口操作，窗口分配器 + 增量窗口函数，演示需求：每10秒钟计算一次用户的PV
  */
 public class C016_WindowAssignerAndReduce {
     public static void main(String[] args) throws Exception {

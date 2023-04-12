@@ -58,9 +58,7 @@ public class CustomerStringUtils {
     }
 
     public static void main(String[] args) {
-        String s = "abcdefg";
-        String fg = CustomerStringUtils.trim(s, "fg");
-        System.out.println(fg);
+
 
     }
 }
