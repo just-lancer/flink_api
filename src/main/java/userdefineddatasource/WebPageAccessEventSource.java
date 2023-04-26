@@ -17,8 +17,8 @@ public class WebPageAccessEventSource implements SourceFunction<WebPageAccessEve
     public Boolean isRunning = true;
     public Integer count = 0;
 
-    //    public final String[] users = {"Anna", "Bob", "Carter", "David", "Eric", "Frank", "Green", "Helen", "Jerry", "Kitty"};
-    public final String[] users = {"Anna"};
+    public final String[] users = {"Anna", "Bob", "Carter", "David", "Eric", "Frank", "Green", "Helen", "Jerry", "Kitty"};
+    //    public final String[] users = {"Anna"};
     public final String[] urls = {"./start", "./market", "./advertising", "./introduction", "./home", "./login", "./register", "./customer", "./searcher", "./set", "./detail", "./feedback"};
     public String user;
     public String url;
