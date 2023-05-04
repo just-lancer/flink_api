@@ -10,6 +10,7 @@ import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.datastream.KeyedStream;
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction;
 import org.apache.flink.util.Collector;
@@ -19,6 +20,8 @@ import utils.CustomerTimeUtils;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * @author shaco
@@ -39,7 +42,7 @@ public class C026_MapState {
                                         new SerializableTimestampAssigner<WebPageAccessEvent>() {
                                             @Override
                                             public long extractTimestamp(WebPageAccessEvent element, long recordTimestamp) {
-                                                return CustomerTimeUtils.stringToTimestamp(element.accessTime, "yyyy-MM-dd hh:dd:ss");
+                                                return CustomerTimeUtils.stringToTimestamp(element.accessTime, "yyyy-MM-dd hh:mm:ss");
                                             }
                                         }
                                 )
@@ -53,11 +56,11 @@ public class C026_MapState {
                 );
 
         // TODO 3、业务逻辑的实现
-        inputDS.process(new MyProcessFunction(5L * 1000, 5L * 1000))
-                .print(">>>>");
+        SingleOutputStreamOperator<ArrayList<WebPageAccessEvent>> process = inputDS.process(new MyProcessFunction(10L * 1000, 5L * 1000));
 
         // TODO 4执行流数据处理
-        inputDS.print("^^^^");
+        process.print("^^^^");
+        inputDS.print(">>>>");
         env.execute();
     }
 
@@ -124,8 +127,8 @@ public class C026_MapState {
                     webPageAccessEvents.add(value);
                     webEventMapState.put(element.f0, webPageAccessEvents);
 
-                    ctx.timerService().registerEventTimeTimer(element.f0 + windowSize - 1);
-                    System.out.println("定时器时间：" + (element.f0 + windowSize - 1));
+                    ctx.timerService().registerEventTimeTimer(element.f0 + windowSize);
+                    System.out.println("定时器时间：" + (element.f0 + windowSize));
                 } else {
                     // 不是，将当前数据添加到Map状态中
                     ArrayList<WebPageAccessEvent> webPageAccessEvents = webEventMapState.get(element.f0);
@@ -138,13 +141,14 @@ public class C026_MapState {
         // 定时器到达
         @Override
         public void onTimer(long timestamp, OnTimerContext ctx, Collector<ArrayList<WebPageAccessEvent>> out) throws Exception {
-            // 将状态中的数据发送到下游
-            out.collect(webEventMapState.get(timestamp - windowSize + 1));
 
-            System.out.println("清理定时器：" + (timestamp - windowSize));
+            // 将状态中的数据发送到下游
+            out.collect(webEventMapState.get(timestamp - windowSize));
+
+//             System.out.println("清理定时器：" + (timestamp - windowSize));
 
             // 清理指定的窗口
-            webEventMapState.remove(timestamp - windowSize + 1);
+            webEventMapState.remove(timestamp - windowSize);
         }
     }
 }
