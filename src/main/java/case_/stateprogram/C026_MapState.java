@@ -64,7 +64,7 @@ public class C026_MapState {
         env.execute();
     }
 
-    static class MyProcessFunction extends KeyedProcessFunction<String, WebPageAccessEvent, ArrayList<WebPageAccessEvent>> {
+    private static class MyProcessFunction extends KeyedProcessFunction<String, WebPageAccessEvent, ArrayList<WebPageAccessEvent>> {
         private Long windowSize; // 单位：毫秒
         private Long windowStep; // 单位：毫秒
 
