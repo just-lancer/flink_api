@@ -54,6 +54,7 @@ public class FlinkCDCTest {
                 .deserializer(new MyDeserialization()) // 自定义反序列化器
                 .startupOptions(StartupOptions.initial())
                 .debeziumProperties(dbProp)
+                .serverId(1000)
                 .build();
         DataStreamSource<String> dataStreamSource = env.addSource(sourceFunction);
 
