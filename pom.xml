@@ -18,21 +18,21 @@
 
     <dependencies>
         <!-- 引入 Flink 相关依赖-->
-        <!-- flink-java -->
+        <!-- flink-java，Flink的核心包，提供流处理、批处理功能，必须加 -->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-java</artifactId>
             <version>${flink.version}</version>
         </dependency>
 
-        <!-- flink-streaming -->
+        <!-- flink-streaming，Flink的核心包，提供流处理功能，必须加 -->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
         </dependency>
 
-        <!-- flink-client -->
+        <!-- flink-client，Flink客户端，用于IDEA开发时，查看运行结果 -->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-clients_${scala.binary.version}</artifactId>
@@ -52,19 +52,6 @@
             <artifactId>flink-connector-jdbc_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
         </dependency>
-        <!-- MySQL依赖包 -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.26</version>
-        </dependency>
-
-        <!-- dataworks用户自定义函数依赖 -->
-        <dependency>
-            <groupId>com.aliyun.odps</groupId>
-            <artifactId>odps-sdk-udf</artifactId>
-            <version>0.29.10-public</version>
-        </dependency>
 
         <!-- fastjson -->
         <dependency>
@@ -72,13 +59,6 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.72</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>4.6</version>
-        </dependency>
-
 
         <!-- 引入日志管理相关依赖-->
         <dependency>
@@ -133,13 +113,7 @@
         </dependency>
 
         <!-- Flink CDC 测试-->
-        <!--         Flink 1.13对应的Flink CDC 版本 -->
-        <!--        <dependency>-->
-        <!--            <groupId>com.alibaba.ververica</groupId>-->
-        <!--            &lt;!&ndash; add the dependency matching your database &ndash;&gt;-->
-        <!--            <artifactId>flink-connector-mysql-cdc</artifactId>-->
-        <!--            <version>1.4.0</version>-->
-        <!--        </dependency>-->
+        <!-- Flink 1.3版本对应可以使用的Flink CDC版本为2.0，1.4等，这是开源Flink CDC-->
         <dependency>
             <groupId>com.ververica</groupId>
             <artifactId>flink-connector-mysql-cdc</artifactId>
@@ -147,7 +121,7 @@
             <version>2.0.0</version>
         </dependency>
 
-        <!-- MySQL 版本-->
+        <!-- MySQL 驱动-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -180,6 +154,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+
         </plugins>
     </build>
 

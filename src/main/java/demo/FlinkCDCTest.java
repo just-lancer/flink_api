@@ -33,16 +33,11 @@ public class FlinkCDCTest {
 
         //1.1 开启CK
 //        env.enableCheckpointing(5000);
-//        env.getCheckpointConfig().setCheckpointTimeout(10000);
-//        env.getCheckpointConfig().setCheckpointingMode(CheckpointingMode.EXACTLY_ONCE);
-//        env.getCheckpointConfig().setMaxConcurrentCheckpoints(1);
-//
-//        env.setStateBackend(new FsStateBackend("hdfs://hadoop102:8020/cdc-test/ck"));
 
         //2.通过FlinkCDC构建SourceFunction
         Properties dbProp = new Properties();
-        dbProp.put("database.serverTimezone", "CTT");
-        dbProp.put("snapshot.locking.mode", "none");
+        dbProp.put("database.serverTimezone", "Asia/Shanghai");
+//        dbProp.put("snapshot.locking.mode", "none");
         DebeziumSourceFunction<String> sourceFunction = MySqlSource.<String>builder()
                 .hostname("localhost")
                 .port(3306)

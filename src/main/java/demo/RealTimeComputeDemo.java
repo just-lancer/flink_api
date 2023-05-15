@@ -42,7 +42,7 @@ public class RealTimeComputeDemo {
         env.setParallelism(1);
 
         // TODO 2、开启检查点
-//        env.enableCheckpointing(15 * 60 * 1000);
+        env.enableCheckpointing(15 * 60 * 1000);
 //        CheckpointConfig checkpointConfig = env.getCheckpointConfig();
 //        // 设置检查点保存路径
 //        checkpointConfig.setCheckpointStorage(new FileSystemCheckpointStorage("hdfs://hadoop132:9820/flink/checkpoint"));
