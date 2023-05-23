@@ -39,7 +39,7 @@ public class C014_WriteToMySQLSink {
                             }
                         },
                         new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
-                                .withUrl("jdbc:mysql://localhost:3306/test")
+                                .withUrl("jdbc:mysql://localhost:3306/test?serverTimezone=UTC")
                                 .withDriverName("com.mysql.cj.jdbc.Driver")
                                 .withUsername("root")
                                 .withPassword("1234")

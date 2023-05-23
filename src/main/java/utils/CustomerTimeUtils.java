@@ -9,7 +9,7 @@ import java.util.Date;
  * @desc 用户自定义时间工具类
  */
 public class CustomerTimeUtils {
-    // 申明格式化对象
+    // 声明格式化对象
     static SimpleDateFormat sdf;
 
     // 将给定的时间字符串按指定的时间字符串格式转换成时间戳
