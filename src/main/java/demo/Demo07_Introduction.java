@@ -20,7 +20,7 @@ import java.sql.Timestamp;
  * @author shaco
  * @version Flink 1.13.6，Flink CDC 2.2.1
  * @create 2023-05-23 17:06
- * @desc 入门案例，UV统计，并将用户信息写入MySQL
+ * @desc 入门案例，每个用户的UV统计，并将用户信息写入MySQL
  */
 public class Demo07_Introduction {
     public static void main(String[] args) throws Exception {
