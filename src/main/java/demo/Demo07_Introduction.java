@@ -31,6 +31,7 @@ public class Demo07_Introduction {
 
         // TODO 2、读取数据源，自定义的实时流数据
         DataStreamSource<WebPageAccessEvent> unboundedDS = env.addSource(new WebPageAccessEventSource());
+        DataStreamSource<WebPageAccessEvent> unboundedDS1 = env.addSource(new WebPageAccessEventSource());
 
         // TODO 3、业务逻辑的处理
         SingleOutputStreamOperator<String> mapDS = unboundedDS
@@ -45,7 +46,6 @@ public class Demo07_Introduction {
 
                             // 第一条数据到来之前，调用该方法
                             @Override
-
                             public void open(Configuration parameters) {
                                 // 初始化状态
                                 // 状态描述器
